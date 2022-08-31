@@ -1,5 +1,7 @@
+const { createUser, findAll } = require('../routes/users');
+
 module.exports = (app) => {
   app.route('/users')
-    .get(app.routes.users.findAll)
-    .post(app.routes.users.createUsers);
+    .get(findAll)
+    .post(createUser);
 };

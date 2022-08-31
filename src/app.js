@@ -1,12 +1,9 @@
 const app = require('express')();
+const setupRoutes = require('./config/routes');
+const setupMiddlewares = require('./config/midlewares');
 
-const consign = require('consign');
-
-consign({ cwd: 'src', verbose: false })
-  .include('./config/midlewares.js')
-  .then('./routes')
-  .then('./config/routes')
-  .into(app);
+setupMiddlewares(app);
+setupRoutes(app);
 
 app.get('/', (req, res) => {
   res.status(200).send();
